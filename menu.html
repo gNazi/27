@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Society 27 - Menu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: url('./bg.jpeg') no-repeat center center/cover;
+            height: 30vh;
+        }
+
+        .header-left {
+			position: absolute;
+			top: 0;
+			left: 0;
+            width: 20%;
+            height: 11%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 48px;
+            font-weight: bold;
+			letter-spacing: 10px;
+			line-height: 45px;
+			padding: 2.5%;
+			cursor: pointer;
+			color: #496A81;
+        }
+
+        .header-right {
+			position: absolute;
+			top: 0;
+			right: 0;
+            width: 4%;
+            height: 15%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-size: 1.2rem;
+            font-weight: bold;
+			gap: 5px;
+			cursor: pointer;
+			color: #496A81;
+        }
+
+        .menu-section {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .menu-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+		
+		.menu-subcategories {
+			display: flex;
+			gap: 15px;
+			justify-content: center;
+		}
+		
+		.menu-subcategories button {
+			color: #496A81;
+			padding: 7px;
+			font-size: 12px;
+			font-weight: 700;
+			border: 0;
+			border-radius: 6px;
+		}
+
+        .category-card {
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .category-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+		
+		.products-wrap {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 20px;
+			flex-wrap: wrap;
+			padding: 10px;
+		}
+
+        .products-grid {
+			display: flex;
+            justify-content: center;
+			margin-left: -10px;
+			margin-right: -10px;
+			gap: 20px;
+        }
+
+        .product-card {
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .product-card img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .product-info {
+            margin-top: 1rem;
+        }
+
+        .product-info h2 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-info p {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-info span {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2B3A67;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-left">Society 27</div>
+    <div class="header-right">
+        <span>M</span>
+        <span>E</span>
+        <span>N</span>
+        <span>U</span>
+    </div>
+</header>
+
+<section class="menu-section">
+    <h1>Menu</h1>
+    <div class="menu-categories" id="categories">
+        <!-- Categories will be dynamically added here -->
+    </div>
+    <div class="menu-subcategories" id="subcategories">
+        <!-- Subcategories will be dynamically added here -->
+    </div>
+	<div class="products-wrap">
+    <div class="products-grid" id="products">
+        <!-- Products will be dynamically added here -->
+    </div>
+	</div>
+</section>
+
+<script>
+    const categories = [
+        { name: "Coffee", image: "./coffee.png", subcategories: ["Espresso", "Latte", "Cappuccino"] },
+        { name: "Mixed Bev.", image: "./mixed.png", subcategories: [] },
+        { name: "Pastries", image: "./pastry.png", subcategories: ["Croissant", "Muffins"] },
+        { name: "Tea", image: "./tea.png", subcategories: [] },
+        { name: "Sandwiches", image: "./sandwiches.png", subcategories: [] },
+        { name: "Soft Drinks", image: "./soft.png", subcategories: [] }
+    ];
+	
+	let products = []
+
+    /*const products = [
+        { name: "Espresso", description: "Rich and bold", price: "$3", category: "Coffee", subcategory: "Espresso", image: "https://placehold.co/200" },
+        { name: "Latte", description: "Smooth and creamy", price: "$4", category: "Coffee", subcategory: "Latte", image: "https://placehold.co/200" },
+        { name: "Croissant", description: "Flaky and buttery", price: "$2.5", category: "Pastries", subcategory: "Croissant", image: "https://placehold.co/200" },
+        { name: "Cappuccino", description: "Frothy delight", price: "$4.5", category: "Coffee", subcategory: "Cappuccino", image: "https://placehold.co/200" },
+        { name: "Muffins", description: "Soft and moist", price: "$3", category: "Pastries", subcategory: "Muffins", image: "https://placehold.co/200" }
+    ];*/
+	
+	//let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT5dglHh7zRXBqcDPDL2mz3fvk5JL0vI1EPgnFvv3IYuZnyScksaT6BfTLhdGy19BVlL2sofcF3SMxH/pub?output=csv";
+	let url = "https://script.google.com/macros/s/AKfycbzhMEsWEv7JnEBuhKMNFRx6IspC7X0AO6XCQmMcbQXyDSF4nM44IhCNmryubUvIfrO5gA/exec"
+
+async function fetchProductsFromCSV(url) {
+        try {
+            const response = await fetch(url, {
+    method: 'GET'});
+            const csvText = await response.text();
+            const lines = csvText.split("\n");
+            const headers = lines[0].split(",");
+            const products = lines.slice(1).map(line => {
+                const values = line.split(",");
+                const product = {};
+                headers.forEach((header, index) => {
+                    product[header.trim()] = values[index].trim();
+                });
+                return product;
+            });
+            console.log(products);
+            return products;
+        } catch (error) {
+            console.error("Error fetching products:", error);
+        }
+    }
+
+    fetchProductsFromCSV(url).then(prods => {
+        products = prods;
+    });
+
+    const categoriesContainer = document.getElementById('categories');
+    const subcategoriesContainer = document.getElementById('subcategories');
+    const productsContainer = document.getElementById('products');
+
+    let activeCategory = null;
+    let activeSubcategory = null;
+
+    function renderCategories() {
+        categoriesContainer.innerHTML = '';
+        categories.forEach(category => {
+            const card = document.createElement('div');
+            card.classList.add('category-card');
+            card.innerHTML = `
+                <img src="${category.image}" alt="${category.name}">
+                <p>${category.name}</p>
+            `;
+            card.addEventListener('click', () => {
+                activeCategory = category.name;
+                activeSubcategory = null;
+                renderSubcategories(category.subcategories);
+                renderProducts();
+            });
+            categoriesContainer.appendChild(card);
+        });
+    }
+
+    function renderSubcategories(subcategories) {
+        subcategoriesContainer.innerHTML = '';
+        subcategories.forEach(subcategory => {
+            const button = document.createElement('button');
+            button.textContent = subcategory;
+            button.addEventListener('click', () => {
+                activeSubcategory = subcategory;
+                renderProducts();
+            });
+            subcategoriesContainer.appendChild(button);
+        });
+    }
+
+    function renderProducts() {
+        productsContainer.innerHTML = '';
+        const filteredProducts = products.filter(product => {
+            return product.category === activeCategory && (!activeSubcategory || product.subcategory === activeSubcategory);
+        });
+
+        filteredProducts.forEach(product => {
+            const card = document.createElement('div');
+            card.classList.add('product-card');
+            card.innerHTML = `
+                <img src="${product.image}" alt="${product.name}">
+                <div class="product-info">
+                    <h2>${product.name}</h2>
+                    <p>${product.description}</p>
+                    <span>${product.price}</span>
+                </div>
+            `;
+            productsContainer.appendChild(card);
+        });
+    }
+
+    renderCategories();
+    renderProducts();
+</script>
+
+</body>
+</html>

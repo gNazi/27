@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Society 27 by Karina</title>
+	
+	<meta name="description" content="A family run coffee shop in the heart of Jounieh, Lebanon providing you with an exceptional coffee experience.">
+	<meta name="keywords" content="society 27,27,coffee shop,lebanon,jounieh,coffee,tea,karina">
+    <meta property="og:title" content="Society 27 by Karina">
+	<meta property="og:description" content="A family run coffee shop in the heart of Jounieh, Lebanon providing you with an exceptional coffee experience.">
+	<!--<meta property="og:url" content="https://www.society27.com/">
+	<meta property="og:image" content="https://www.society27.com/society27-card.png">-->
+	<meta property="og:type" content="website">
+	<meta property="og:locale" content="en_US">
+	
+	<meta name="twitter:title" content="Society 27 by Karina">
+	<meta name="twitter:description" content="A family run coffee shop in the heart of Jounieh, Lebanon providing you with an exceptional coffee experience.">
+	<!--<meta name="twitter:image" content="https://www.society27.com/society27-card.png">-->
+	<meta name="twitter:card" content="summary_large_image">
+	<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+		
+		.shorter {
+			height: 60vh;
+		}
+
+        /* Section 1 */
+        .section-1 {
+            background: url('./bg.jpeg') no-repeat center center/cover;
+            position: relative;
+        }
+
+        .section-1 .button-top-left {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 27%;
+            height: 22%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 96px;/*6rem;*/
+            font-weight: bold;
+			letter-spacing: 10px;
+			line-height: 90px;
+			padding: 2.5%;
+			cursor: pointer;
+			color: #496A81;
+        }
+
+        .section-1 .button-top-right {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 5%;
+            height: 30%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-size: 3rem;
+            font-weight: bold;
+			gap: 5px;
+			cursor: pointer;
+			color: #496A81;
+        }
+
+        /* Section 2, 3, 4, 5 */
+        .section-info {
+            flex-direction: column;
+            text-align: center;
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .split-horizontal {
+            background: linear-gradient(to bottom, #496A81 50%, white 50%);
+        }
+
+        .split-vertical {
+            background: linear-gradient(to right, #496A81 0%, #496A81 35%, white 35%, white 100%);
+        }
+
+        .info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 0 auto;
+            gap: 2rem;
+        }
+
+        .info img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+            position: relative;
+        }
+		
+		.sml {
+			max-width: 300px !important;
+		}
+
+        .info img + button {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: #2B3A67;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .info .text {
+            flex: 1;
+			text-align: left;
+        }
+		
+		.right {
+			text-align: right;
+		}
+
+        .info .text .line {
+            height: 5px;
+            width: 300px;
+            background: #2B3A67;
+            margin: 0 auto;
+			margin-bottom: 16px;
+        }
+
+        .info .text h1 {
+            font-size: 4rem;
+            margin: 1rem 0;
+			color: #2B3A67;
+        }
+
+        .info .text p {
+            font-size: 1.5rem;
+            color: #555;
+			color: #B3AF8F;
+        }
+
+        /* Section 6 */
+        .section-6 {
+            background: linear-gradient(to bottom, white 0%, white 25%, transparent 25%, transparent 100%), linear-gradient(to right, white 0%, white 25%, #496A81 25%, #496A81 75%, white 75%, white 100%);
+			
+        }
+
+        .subscribe {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+			width: 100%;
+        }
+		
+		.inputs {
+			width: 60%;
+			display: flex;
+			justify-content: space-between;
+			gap: 30px;
+		}
+
+        .subscribe input {
+            width: 50%;
+            padding: 0.5rem;
+            border: 2px solid #2B3A67;
+            border-radius: 5px;
+			font-size: 1.5rem;
+        }
+
+        .subscribe button {
+            width: 60%;
+            padding: 0.5rem;
+            background: #2B3A67;
+            color: white;
+            border: none;
+            border-radius: 5px;
+			font-size: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2B3A67;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        footer .links {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+		
+		footer .links a {
+			text-decoration: none;
+			color: white;
+        }
+
+        footer .links span {
+            border-left: 2px solid white;
+            height: 20px;
+        }
+		
+		footer .dev {
+			position: absolute;
+			left: 50%;
+			transform: translate(-50%, 0);
+			margin-top: 15px;
+		}
+		
+		footer .dev a{
+			color: #FFC482;
+			font-size: 20px;
+			text-decoration: underline;
+		}
+
+        footer .site-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+			letter-spacing: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="section-1">
+        <div class="button-top-left">Society 27</div>
+        <div class="button-top-right" onclick="location.href='./menu.html'" >
+            <span>M</span>
+            <span>E</span>
+            <span>N</span>
+            <span>U</span>
+        </div>
+    </section>
+
+    <section class="split-horizontal section-info">
+        <div class="info">
+            <img src="./cake.jpg" alt="Placeholder">
+            <div class="text">
+                <div class="line"></div>
+                <h1>UNIQUELY MADE</h1>
+                <p>Our products are uniquely crafted as a family with family in mind for families to families and by a family</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-info shorter">
+        <div class="info">
+            <div class="text right">
+                <h1>HOMEMADE with LOVE</h1>
+                <div class="line"></div>
+                <p>All 27 products are made at home without clients supervision at the comfort of our own house where we can scratch our asses and continue baking without being annoyed by you fuckers <3</p>
+            </div>
+            <img src="./cake.jpg" class="sml" alt="Placeholder">
+        </div>
+    </section>
+
+    <section class="split-vertical section-info">
+        <div class="info">
+            <img src="./cake.jpg" alt="Placeholder">
+            <div class="text">
+                <div class="line"></div>
+                <h1>OUR STORY</h1>
+                <p>I had a dream that one day i would run a coffee shop and that it will rise up and live out the true meaning of its creed. Pajamas outside !</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-info">
+        <div class="info">
+            <div class="text right">
+                <h1>The Visionary</h1>
+                <div class="line"></div>
+                <p>Hola, meu nome e Karina 3beid the owner/visionary/artist/ entrpeneur/coffee-addict /.... and yes, you guessed it, I am a diva. </p>
+            </div>
+            <img src="./Mrs_Potato_Head.jpg" alt="Placeholder">
+        </div>
+    </section>
+
+    <section class="section-6 shorter">
+        <div class="subscribe">
+			<div class="inputs">
+				<input type="text" placeholder="Name">
+				<input type="email" placeholder="Email">
+			</div>
+            <button>Subscribe</button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="links">
+            <a href="#">About</a>
+            <span></span>
+            <a href="#">Mission</a>
+            <span></span>
+            <a href="#">Wholesale</a>
+            <span></span>
+            <a href="#">Menu</a>
+            <span></span>
+            <a href="#">Contact</a>
+        </div>
+		<div class="dev">developed by <a href="https://gabrielnazi.com" target="_blank"><i>Gabriel Nazi</i></a> </div>
+        <div class="site-name">Society 27</div>
+    </footer>
+
+</body>
+</html>
