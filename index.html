@@ -38,7 +38,7 @@
             height: 100vh;
         }
 		
-		.shorter {
+		.shorter, .shorter2 {
 			height: 60vh;
 		}
 
@@ -64,7 +64,7 @@
 			line-height: 90px;
 			padding: 2.5%;
 			cursor: pointer;
-			color: #496A81;
+			
         }
 
         .section-1 .button-top-right {
@@ -82,7 +82,7 @@
             font-weight: bold;
 			gap: 5px;
 			cursor: pointer;
-			color: #496A81;
+			
         }
 
         /* Section 2, 3, 4, 5 */
@@ -113,7 +113,7 @@
         .info img {
             width: 100%;
             max-width: 600px;
-            border-radius: 10px;
+            border-radius: 75px;
             position: relative;
         }
 		
@@ -144,7 +144,7 @@
         .info .text .line {
             height: 5px;
             width: 300px;
-            background: #2B3A67;
+            background: AntiqueWhite;
             margin: 0 auto;
 			margin-bottom: 16px;
         }
@@ -152,13 +152,11 @@
         .info .text h1 {
             font-size: 4rem;
             margin: 1rem 0;
-			color: #2B3A67;
         }
 
         .info .text p {
             font-size: 1.5rem;
             color: #555;
-			color: #B3AF8F;
         }
 
         /* Section 6 */
@@ -244,12 +242,113 @@
             font-weight: bold;
 			letter-spacing: 5px;
         }
+		
+		@media (max-width: 768px) {
+            .section-1 .button-top-left {
+                font-size: 27px;
+                letter-spacing: 5px;
+                padding: 1.5%;
+                height: 8%;
+				line-height: 30px;
+            }
+
+            .section-1 .button-top-right {
+                width: 6%;
+                height: 13%;
+                font-size: 1rem;
+            }
+			
+			.info .text h1 {
+				font-size: 2rem;
+			}
+
+			.info .text p {
+				font-size: 1rem;
+			}
+
+            .menu-categories {
+                gap: 0.5rem;
+            }
+
+            .category-card img {
+                width: 60px;
+                height: 60px;
+            }
+
+            .product-card {
+                max-width: 150px;
+                padding: 0.8rem;
+            }
+
+            .product-info h2 {
+                font-size: 1rem;
+            }
+
+            .product-info p {
+                font-size: 0.9rem;
+            }
+
+            .product-info span {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-1 .button-top-left {
+                font-size: 18px;
+                padding: 1%;
+                height: 6%;
+				line-height:24px;
+            }
+
+            .menu-section h1 {
+                font-size: 1.8rem;
+            }
+			
+			.info .text h1 {
+				font-size: 1.8rem;
+			}
+
+			.info .text p {
+				font-size: 1rem;
+			}
+
+            .category-card img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .product-card {
+                max-width: 120px;
+                padding: 0.6rem;
+            }
+
+            .product-info h2 {
+                font-size: 0.9rem;
+            }
+
+            .product-info p {
+                font-size: 0.8rem;
+            }
+
+            .product-info span {
+                font-size: 0.9rem;
+            }
+			
+			.info {
+				flex-direction: column;
+			}
+			
+			.shorter2 {
+				height: 50vh;
+			}
+        }
     </style>
 </head>
 <body>
 
     <section class="section-1">
-        <div class="button-top-left">Society 27</div>
+        <div class="button-top-left" onclick="location.href='./index.html'">Society 27</div>
         <div class="button-top-right" onclick="location.href='./menu.html'" >
             <span>M</span>
             <span>E</span>
@@ -302,7 +401,7 @@
         </div>
     </section>
 
-    <section class="section-6 shorter">
+    <section class="section-6 shorter2">
         <div class="subscribe">
 			<div class="inputs">
 				<input type="text" placeholder="Name">

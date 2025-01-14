@@ -4,6 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Society 27 - Menu</title>
+	<script>
+	const categories = [
+        { name: "Coffee", image: "./coffee.png", subcategories: ["Espresso", "Latte", "Cappuccino"] },
+        { name: "Mixed Bev.", image: "./mixed.png", subcategories: [] },
+        { name: "Pastries", image: "./pastry.png", subcategories: ["Croissant", "Muffins"] },
+        { name: "Tea", image: "./tea.png", subcategories: [] },
+        { name: "Sandwiches", image: "./sandwiches.png", subcategories: [] },
+        { name: "Soft Drinks", image: "./soft.png", subcategories: [] }
+    ];
+	
+	let products = []
+		window.onload = function() {
+			
+
+    /*const products = [
+        { name: "Espresso", description: "Rich and bold", price: "$3", category: "Coffee", subcategory: "Espresso", image: "https://placehold.co/200" },
+        { name: "Latte", description: "Smooth and creamy", price: "$4", category: "Coffee", subcategory: "Latte", image: "https://placehold.co/200" },
+        { name: "Croissant", description: "Flaky and buttery", price: "$2.5", category: "Pastries", subcategory: "Croissant", image: "https://placehold.co/200" },
+        { name: "Cappuccino", description: "Frothy delight", price: "$4.5", category: "Coffee", subcategory: "Cappuccino", image: "https://placehold.co/200" },
+        { name: "Muffins", description: "Soft and moist", price: "$3", category: "Pastries", subcategory: "Muffins", image: "https://placehold.co/200" }
+    ];*/
+	
+	//let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT5dglHh7zRXBqcDPDL2mz3fvk5JL0vI1EPgnFvv3IYuZnyScksaT6BfTLhdGy19BVlL2sofcF3SMxH/pub?output=csv";
+	let url = "https://script.google.com/macros/s/AKfycbzhMEsWEv7JnEBuhKMNFRx6IspC7X0AO6XCQmMcbQXyDSF4nM44IhCNmryubUvIfrO5gA/exec"
+
+async function fetchProductsFromCSV(url) {
+        try {
+            const response = await fetch(url, {
+    method: 'GET'});
+            const csvText = await response.text();
+            const lines = csvText.split("\n");
+            const headers = lines[0].split(",");
+            const products = lines.slice(1).map(line => {
+                const values = line.split(",");
+                const product = {};
+                headers.forEach((header, index) => {
+                    product[header.trim()] = values[index].trim();
+                });
+                return product;
+            });
+			document.getElementById("loader").style.display= "none";
+            console.log(products);
+            return products;
+        } catch (error) {
+            console.error("Error fetching products:", error);
+        }
+    }
+
+    fetchProductsFromCSV(url).then(prods => {
+        products = prods;
+    });
+		};
+	</script>
     <style>
         * {
             margin: 0;
@@ -16,6 +69,51 @@
             color: #333;
             overflow-x: hidden;
         }
+		
+		.cup{
+			height: 75px;
+			width: 95px;
+			border: 6px solid #2B3A67;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			border-radius: 0px 0px 70px 70px;
+			background: url(cafe.png);
+			box-shadow: 0px 0px 0px 6px #496A81;
+			background-repeat:  repeat-x;
+			background-position: 0px 149px;
+			animation: fill 3.75s infinite;
+
+		} 
+		@keyframes fill {
+			0%{
+				background-position: 0px 149px;
+			}
+			20%{
+				background-position: -460px 90px;
+			}
+			40%{
+				background-position: -900px 50px;
+
+			}
+			80%{
+				background-position:-1350px  -40px;
+			}
+			100%{
+				background-position: 0px 149px;
+				
+			}
+		}
+		.cup-handle{
+			height: 40px;
+			width: 25px;
+			background-color: transparent;
+			border: 6px solid #496A81;
+			position: relative;
+			left: 102.5px;
+			top: 2px;
+			border-radius: 0px 25px 80px 0px ;
+		}
 
         header {
             display: flex;
@@ -41,7 +139,7 @@
 			line-height: 45px;
 			padding: 2.5%;
 			cursor: pointer;
-			color: #496A81;
+			
         }
 
         .header-right {
@@ -59,7 +157,7 @@
             font-weight: bold;
 			gap: 5px;
 			cursor: pointer;
-			color: #496A81;
+			
         }
 
         .menu-section {
@@ -156,13 +254,102 @@
             font-weight: bold;
             color: #2B3A67;
         }
+		
+		#loader {
+			background-color: rgba(73, 106, 129, 0);
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 99999;
+		}
+		
+		@media (max-width: 768px) {
+            .header-left {
+                font-size: 24px;
+                letter-spacing: 5px;
+                padding: 1.5%;
+                height: 8%;
+            }
+
+            .header-right {
+                width: 8%;
+                height: 10%;
+                font-size: 1rem;
+            }
+
+            .menu-section h1 {
+                font-size: 2rem;
+            }
+
+            .menu-categories {
+                gap: 0.5rem;
+            }
+
+            .category-card img {
+                width: 60px;
+                height: 60px;
+            }
+
+            .product-card {
+                max-width: 150px;
+                padding: 0.8rem;
+            }
+
+            .product-info h2 {
+                font-size: 1rem;
+            }
+
+            .product-info p {
+                font-size: 0.9rem;
+            }
+
+            .product-info span {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-left {
+                font-size: 18px;
+                padding: 1%;
+                height: 6%;
+            }
+
+            .menu-section h1 {
+                font-size: 1.8rem;
+            }
+
+            .category-card img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .product-card {
+                max-width: 120px;
+                padding: 0.6rem;
+            }
+
+            .product-info h2 {
+                font-size: 0.9rem;
+            }
+
+            .product-info p {
+                font-size: 0.8rem;
+            }
+
+            .product-info span {
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="header-left">Society 27</div>
-    <div class="header-right">
+    <div class="header-left" onclick="location.href='./index.html'">Society 27</div>
+    <div class="header-right" onclick="location.href='./menu.html'">
         <span>M</span>
         <span>E</span>
         <span>N</span>
@@ -185,54 +372,14 @@
 	</div>
 </section>
 
+<div id="loader">
+<div class="cup">
+        <div class="cup-handle"></div>
+</div>
+</div>
+
 <script>
-    const categories = [
-        { name: "Coffee", image: "./coffee.png", subcategories: ["Espresso", "Latte", "Cappuccino"] },
-        { name: "Mixed Bev.", image: "./mixed.png", subcategories: [] },
-        { name: "Pastries", image: "./pastry.png", subcategories: ["Croissant", "Muffins"] },
-        { name: "Tea", image: "./tea.png", subcategories: [] },
-        { name: "Sandwiches", image: "./sandwiches.png", subcategories: [] },
-        { name: "Soft Drinks", image: "./soft.png", subcategories: [] }
-    ];
-	
-	let products = []
-
-    /*const products = [
-        { name: "Espresso", description: "Rich and bold", price: "$3", category: "Coffee", subcategory: "Espresso", image: "https://placehold.co/200" },
-        { name: "Latte", description: "Smooth and creamy", price: "$4", category: "Coffee", subcategory: "Latte", image: "https://placehold.co/200" },
-        { name: "Croissant", description: "Flaky and buttery", price: "$2.5", category: "Pastries", subcategory: "Croissant", image: "https://placehold.co/200" },
-        { name: "Cappuccino", description: "Frothy delight", price: "$4.5", category: "Coffee", subcategory: "Cappuccino", image: "https://placehold.co/200" },
-        { name: "Muffins", description: "Soft and moist", price: "$3", category: "Pastries", subcategory: "Muffins", image: "https://placehold.co/200" }
-    ];*/
-	
-	//let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT5dglHh7zRXBqcDPDL2mz3fvk5JL0vI1EPgnFvv3IYuZnyScksaT6BfTLhdGy19BVlL2sofcF3SMxH/pub?output=csv";
-	let url = "https://script.google.com/macros/s/AKfycbzhMEsWEv7JnEBuhKMNFRx6IspC7X0AO6XCQmMcbQXyDSF4nM44IhCNmryubUvIfrO5gA/exec"
-
-async function fetchProductsFromCSV(url) {
-        try {
-            const response = await fetch(url, {
-    method: 'GET'});
-            const csvText = await response.text();
-            const lines = csvText.split("\n");
-            const headers = lines[0].split(",");
-            const products = lines.slice(1).map(line => {
-                const values = line.split(",");
-                const product = {};
-                headers.forEach((header, index) => {
-                    product[header.trim()] = values[index].trim();
-                });
-                return product;
-            });
-            console.log(products);
-            return products;
-        } catch (error) {
-            console.error("Error fetching products:", error);
-        }
-    }
-
-    fetchProductsFromCSV(url).then(prods => {
-        products = prods;
-    });
+    
 
     const categoriesContainer = document.getElementById('categories');
     const subcategoriesContainer = document.getElementById('subcategories');
