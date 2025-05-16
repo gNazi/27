@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Society 27 - Page Not Found</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: url('./bg.jpeg') no-repeat center center/cover;
+            height: 30vh;
+        }
+
+        .header-left {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20%;
+            height: 11%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 48px;
+            font-weight: bold;
+            letter-spacing: 10px;
+            line-height: 45px;
+            padding: 2.5%;
+            cursor: pointer;
+        }
+
+        .header-right {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 4%;
+            height: 15%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-size: 1.2rem;
+            font-weight: bold;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .error-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 60vh;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .error-section h1 {
+            font-size: 8rem;
+            color: #496A81;
+            margin-bottom: 1rem;
+        }
+
+        .error-section h2 {
+            font-size: 2.5rem;
+            color: #2B3A67;
+            margin-bottom: 2rem;
+        }
+
+        .error-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .cup {
+            height: 75px;
+            width: 95px;
+            position: relative;
+            border-radius: 0px 0px 70px 70px;
+            background: url(cafe.png);
+            box-shadow: 0px 7px 0px 7px #496A81;
+            background-repeat: repeat-x;
+            background-position: 0px 149px;
+            animation: fill 3.75s infinite;
+            margin: 2rem auto;
+        }
+
+        .cup-top {
+            content: '';
+            width: 95px;
+            height: 95px;
+            position: absolute;
+            top: 0px;
+            left: 0;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .cup-top::before {
+            content: '';
+            width: 120px;
+            height: 30px;
+            position: absolute;
+            border-radius: 50%;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: white;
+            z-index: 2;
+        }
+
+        .cup-top::after {
+            content: '';
+            width: 120px;
+            height: 30px;
+            position: absolute;
+            border-radius: 50%;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0px 0px 0px 6px #496A81;
+            z-index: 1;
+        }
+
+        .cup-handle {
+            height: 40px;
+            width: 25px;
+            background-color: transparent;
+            border: 6px solid #496A81;
+            position: relative;
+            left: 107.5px;
+            top: 5px;
+            border-radius: 0px 25px 80px 0px;
+        }
+
+        .home-button {
+            padding: 1rem 2rem;
+            background-color: #496A81;
+            color: white;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .home-button:hover {
+            background-color: #2B3A67;
+        }
+
+        @keyframes fill {
+            0% {
+                background-position: 0px 149px;
+            }
+
+            20% {
+                background-position: -460px 90px;
+            }
+
+            40% {
+                background-position: -900px 50px;
+            }
+
+            80% {
+                background-position: -1350px -40px;
+            }
+
+            100% {
+                background-position: 0px 149px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-left {
+                font-size: 24px;
+                letter-spacing: 5px;
+                padding: 1.5%;
+                height: 8%;
+            }
+
+            .header-right {
+                width: 8%;
+                height: 10%;
+                font-size: 1rem;
+            }
+
+            .error-section h1 {
+                font-size: 6rem;
+            }
+
+            .error-section h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-left {
+                font-size: 18px;
+                padding: 1%;
+                height: 6%;
+            }
+
+            .error-section h1 {
+                font-size: 4rem;
+            }
+
+            .error-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-left" onclick="location.href='./index.html'">Society 27</div>
+        <div class="header-right" onclick="location.href='./menu.html'">
+            <span>M</span>
+            <span>E</span>
+            <span>N</span>
+            <span>U</span>
+        </div>
+    </header>
+
+    <section class="error-section">
+        <h1>404</h1>
+        <h2>Page Not Found</h2>
+        <p>Looks like this page has been brewed away! Our baristas couldn't find what you were looking for.</p>
+
+        <div class="cup">
+            <div class="cup-top"></div>
+            <div class="cup-handle"></div>
+        </div>
+
+        <button class="home-button" onclick="location.href='./index.html'">Back to Home</button>
+    </section>
+</body>
+
+</html>
