@@ -23,6 +23,10 @@
         content="A family run coffee shop in the heart of Jounieh, Lebanon providing you with an exceptional coffee experience.">
     <!--<meta name="twitter:image" content="https://www.society27.com/society27-card.png">-->
     <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
     <style>
         * {
             margin: 0;
@@ -197,7 +201,7 @@
         }
 
         .subscribe input {
-            width: 50%;
+            width: 90%;
             padding: 0.5rem;
             border: 2px solid #2B3A67;
             border-radius: 5px;
@@ -212,6 +216,15 @@
             border: none;
             border-radius: 5px;
             font-size: 2rem;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #wa-logo {
+            height: 30px;
+            filter: invert(1);
         }
 
         /* Footer */
@@ -257,6 +270,10 @@
             font-size: 1.5rem;
             font-weight: bold;
             letter-spacing: 5px;
+        }
+
+        #subscribeBtn {
+            cursor: pointer;
         }
 
         @media (max-width: 1600px) {
@@ -465,16 +482,16 @@
 
         @media (max-width: 768px) {
             .section-1 .button-top-left {
-                font-size: 30px;
+                font-size: 22px;
                 letter-spacing: 5px;
                 padding: 1.5%;
                 height: 9%;
-                line-height: 34px;
+                line-height: 20px;
             }
 
             .section-1 .button-top-right {
-                width: 4%;
-                height: 13%;
+                width: 7%;
+                height: 20%;
                 font-size: 1rem;
                 gap: 2px;
             }
@@ -518,8 +535,8 @@
             .section-1 .button-top-left {
                 font-size: 18px;
                 padding: 1%;
-                height: 6%;
-                line-height: 24px;
+                height: 8%;
+                line-height: 20px;
             }
 
             .menu-section h1 {
@@ -605,7 +622,7 @@
         }
 
         @media (max-width: 768px) {
-            section {
+            .section-info {
                 height: auto;
                 padding: 60px 0;
             }
@@ -663,7 +680,7 @@
             }
 
             .section-1 .button-top-right {
-                width: 10%;
+                width: 7%;
             }
 
             .section-1 .logo {
@@ -701,7 +718,7 @@
             }
 
             .section-1 .button-top-right {
-                width: 12%;
+                width: 7%;
                 font-size: 0.8rem;
             }
 
@@ -787,10 +804,10 @@
     <section class="section-6 shorter2">
         <div class="subscribe">
             <div class="inputs">
-                <input type="text" placeholder="Name">
-                <input type="email" placeholder="Email">
+                <input type="text" id="firstName" placeholder="First Name">
+                <input type="text" id="lastName" placeholder="Last Name">
             </div>
-            <button>Subscribe</button>
+            <button id="subscribeBtn">Subscribe<img id="wa-logo" src="./wa-logo.png" /></button>
         </div>
     </section>
 
@@ -809,6 +826,38 @@
         <div class="dev">developed by <a href="https://gabrielnazi.com" target="_blank"><i>Gabriel Nazi</i></a> </div>
         <div class="site-name">Society 27</div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const subscribeBtn = document.getElementById('subscribeBtn');
+            const firstNameInput = document.getElementById('firstName');
+            const lastNameInput = document.getElementById('lastName');
+
+            // WhatsApp phone number (international format without + or spaces)
+            const whatsappNumber = "9613556461"; // Replace with your actual WhatsApp number
+
+            subscribeBtn.addEventListener('click', function () {
+                const firstName = firstNameInput.value.trim();
+                const lastName = lastNameInput.value.trim();
+
+                if (firstName && lastName) {
+                    // Create the message
+                    const message = `Hello Society 27!\nMy name is ${firstName} ${lastName}.\nI would like to subscribe to your updates and promotions.`;
+
+                    // Encode the message for URL
+                    const encodedMessage = encodeURIComponent(message);
+
+                    // Create WhatsApp URL
+                    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+                    // Open WhatsApp in a new tab
+                    window.open(whatsappUrl, '_blank');
+                } else {
+                    alert("Please enter both your first and last name.");
+                }
+            });
+        });
+    </script>
 
 </body>
 
